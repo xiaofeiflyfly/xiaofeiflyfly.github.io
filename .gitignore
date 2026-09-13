@@ -1,0 +1,6 @@
+_site
+.generator_cache
+.venv
+__pycache__
+*.egg-info
+.DS_Store

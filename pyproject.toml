@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "generator"
+version = "0.1.0"
+description = "A minimal Chinese-friendly static blog generator, inspired by lucumr.pocoo.org"
+authors = [
+    {name = "xiaofeiflyfly"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Jinja2>=3.0",
+    "marko",
+    "Pygments",
+    "pyyaml",
+    "watchdog",
+]
+
+[project.scripts]
+build-blog = "generator.builder:main"
+serve-blog = "generator.serve:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["generator"]
+
+[dependency-groups]
+dev = [
+    "ruff",
+]

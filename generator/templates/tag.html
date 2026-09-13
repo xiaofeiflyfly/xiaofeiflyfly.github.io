@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}标签「{{ tag }}」 | {{ config.title }}{% endblock %}
+{% block content %}
+<h1 class="page-title">标签：{{ tag }} <span class="count">({{ tag_posts | length }} 篇)</span></h1>
+<ul class="archive-list">
+{% for post in tag_posts %}
+  <li><time>{{ post.date_iso }}</time> <a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

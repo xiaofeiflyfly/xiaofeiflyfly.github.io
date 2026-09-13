@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ config.title }}</title>
+  <subtitle>{{ config.subtitle }}</subtitle>
+  <id>{{ config.site_url }}{{ config.base_path }}/</id>
+  <link href="{{ config.site_url }}{{ config.base_path }}/"/>
+  <link rel="self" href="{{ config.site_url }}{{ config.base_path }}/feed.atom"/>
+  <updated>{% if feed_posts %}{{ feed_posts[0].pub_date.strftime('%Y-%m-%dT00:00:00+08:00') }}{% else %}2026-01-01T00:00:00+08:00{% endif %}</updated>
+  <author><name>{{ config.author }}</name></author>
+  {% for post in feed_posts %}
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="{{ post.absolute_url }}"/>
+    <id>{{ post.absolute_url }}</id>
+    <published>{{ post.pub_date.strftime('%Y-%m-%dT00:00:00+08:00') }}</published>
+    <updated>{{ post.pub_date.strftime('%Y-%m-%dT00:00:00+08:00') }}</updated>
+    <summary>{{ post.summary }}</summary>
+  </entry>
+  {% endfor %}
+</feed>

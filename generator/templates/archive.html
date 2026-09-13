@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}归档 | {{ config.title }}{% endblock %}
+{% block content %}
+<h1 class="page-title">归档</h1>
+{% for year, year_posts in by_year.items() %}
+<section class="archive-year">
+  <h2>{{ year }} <span class="count">({{ year_posts | length }} 篇)</span></h2>
+  <ul class="archive-list">
+    {% for post in year_posts %}
+    <li><time>{{ post.date_iso }}</time> <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
+{% endblock %}

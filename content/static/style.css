@@ -1,0 +1,328 @@
+/* ============================================================
+   小飞的博客 · 极简中文排版
+   设计参考 lucumr.pocoo.org（衬线、内容为王、无 JS），
+   中文适配：系统字体栈、行高 1.9、中文标点规则
+   ============================================================ */
+
+:root {
+  --text-color: #1a1a1a;
+  --muted-color: #6b7280;
+  --accent-color: #1b3156;
+  --link-color: #1b3156;
+  --background-color: #ffffff;
+  --border-color: #e5e7eb;
+  --code-block-background-color: #f6f8fa;
+  --inline-code-background-color: #f0f2f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #dce7f3;
+    --muted-color: #8b98ab;
+    --accent-color: #96afda;
+    --link-color: #96afda;
+    --background-color: #12181f;
+    --border-color: #2a3441;
+    --code-block-background-color: #1a222c;
+    --inline-code-background-color: #1e2833;
+  }
+}
+
+/* -- 字体栈：拉丁衬线 + 中文系统字体回退 ------------------- */
+
+html {
+  font-size: 17px;
+}
+
+body {
+  font-family: Georgia, "Times New Roman",
+    "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun",
+    serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.9; /* 中文字符需要比拉丁更大的行高 */
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+/* 代码字体：等宽 + 中文注释回退 */
+pre, code, tt, kbd, samp {
+  font-family: "SF Mono", "Ubuntu Mono", Menlo, Consolas,
+    "PingFang SC", "Microsoft YaHei", monospace;
+  font-size: 0.88em;
+}
+
+/* -- 布局 --------------------------------------------------- */
+
+.container {
+  max-width: 44em; /* 中文正文列宽约 40 字/行，阅读最舒适 */
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+main.body {
+  flex: 1;
+}
+
+/* -- 站点头部 ----------------------------------------------- */
+
+.site-header {
+  margin-bottom: 3rem;
+}
+
+.site-title {
+  font-size: 1.8rem;
+  margin: 0 0 0.2rem;
+}
+
+.site-title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.site-subtitle {
+  color: var(--muted-color);
+  margin: 0 0 1rem;
+}
+
+.site-nav a {
+  color: var(--link-color);
+  text-decoration: none;
+  margin-right: 1.2em;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* -- 文章列表（首页）---------------------------------------- */
+
+.post-teaser {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.teaser-title {
+  font-size: 1.35rem;
+  margin: 0 0 0.3rem;
+  line-height: 1.5;
+}
+
+.teaser-title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.teaser-title a:hover {
+  color: var(--link-color);
+}
+
+.meta {
+  color: var(--muted-color);
+  font-size: 0.88rem;
+  margin: 0 0 0.6rem;
+}
+
+a.tag {
+  color: var(--muted-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--muted-color);
+}
+
+a.tag:hover {
+  color: var(--link-color);
+}
+
+.summary {
+  margin: 0 0 0.5rem;
+}
+
+.more a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.more a:hover {
+  text-decoration: underline;
+}
+
+/* -- 分页 --------------------------------------------------- */
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.pagination a {
+  color: var(--link-color);
+}
+
+.page-info {
+  color: var(--muted-color);
+}
+
+/* -- 文章页 -------------------------------------------------- */
+
+.post-title {
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.4rem;
+  text-wrap: balance;
+}
+
+.post-content {
+  margin-top: 1.5rem;
+}
+
+.post-content h1, .post-content h2, .post-content h3,
+.post-content h4, .post-content h5, .post-content h6 {
+  line-height: 1.5;
+  margin: 2.2rem 0 0.9rem;
+  text-wrap: balance;
+}
+
+.post-content h2 { font-size: 1.4rem; }
+.post-content h3 { font-size: 1.2rem; }
+
+.post-content p {
+  margin: 0 0 1.1rem;
+  /* 中文两端对齐 + 避免标点出现在行首 */
+  text-align: justify;
+  line-break: strict;
+}
+
+.post-content a {
+  color: var(--link-color);
+}
+
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.2rem 1.2rem;
+  border-left: 3px solid var(--border-color);
+  color: var(--muted-color);
+}
+
+.post-content ul, .post-content ol {
+  padding-left: 1.8em;
+  margin: 0 0 1.1rem;
+}
+
+.post-content img {
+  max-width: 100%;
+}
+
+/* 代码块 */
+.post-content pre {
+  background-color: var(--code-block-background-color);
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  line-height: 1.6; /* 代码不需要 1.9 */
+  margin: 0 0 1.2rem;
+}
+
+.post-content code {
+  background-color: var(--inline-code-background-color);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+.post-content pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* 表格 */
+.post-content table {
+  border-collapse: collapse;
+  margin: 0 0 1.2rem;
+  width: 100%;
+  font-size: 0.92em;
+}
+
+.post-content th, .post-content td {
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+
+.post-content th {
+  background-color: var(--code-block-background-color);
+}
+
+/* 脚注 */
+.post-content .footnote-ref {
+  font-size: 0.75em;
+  vertical-align: super;
+}
+
+.post-content .footnotes {
+  color: var(--muted-color);
+  font-size: 0.9em;
+}
+
+/* -- 归档/标签页 --------------------------------------------- */
+
+.page-title {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.count {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.archive-year h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.archive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.archive-list li {
+  margin-bottom: 0.4rem;
+}
+
+.archive-list time {
+  color: var(--muted-color);
+  font-size: 0.88em;
+  margin-right: 0.8em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -- 页脚 ---------------------------------------------------- */
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--muted-color);
+}
+
+/* -- 响应式 -------------------------------------------------- */
+
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  .container { padding: 1.5rem 1rem 2.5rem; }
+  .post-content p { text-align: left; } /* 小屏窄列 justify 会出现大空隙 */
+}
