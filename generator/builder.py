@@ -170,7 +170,8 @@ class Builder:
             for tag in post.tags:
                 tags.setdefault(tag, []).append(post)
         for tag, posts in tags.items():
-            self._render("tag.html", f"tags/{quote(tag)}/index.html", tag=tag, tag_posts=posts)
+            # 磁盘目录用原文（服务器按解码后的路径查找）；URL 编码只用于模板里的 href
+            self._render("tag.html", f"tags/{tag}/index.html", tag=tag, tag_posts=posts)
 
     def _write_archive(self):
         by_year = {}
