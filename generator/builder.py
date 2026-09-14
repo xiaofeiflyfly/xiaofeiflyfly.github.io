@@ -180,7 +180,7 @@ class Builder:
         self._render("archive.html", "archive/index.html", by_year=by_year)
 
     def _write_feed(self):
-        self._render("feed.xml", "feed.atom", feed_posts=self.posts[: CONFIG["feed_limit"]])
+        self._render("feed.xml", "feed.xml", feed_posts=self.posts[: CONFIG["feed_limit"]])
 
 
 def main():

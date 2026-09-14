@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
-  <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ config.base_path }}/feed.atom">
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ config.base_path }}/feed.xml">
   <link rel="stylesheet" href="{{ config.base_path }}/static/style.css">
   <link rel="stylesheet" href="{{ config.base_path }}/static/pygments.css">
   {% block htmlhead %}{% endblock %}
@@ -17,14 +17,14 @@
     <nav class="site-nav">
       <a href="{{ config.base_path }}/">首页</a>
       <a href="{{ config.base_path }}/archive/">归档</a>
-      <a href="{{ config.base_path }}/feed.atom">订阅</a>
+      <a href="{{ config.base_path }}/feed.xml">订阅</a>
     </nav>
   </header>
   <main class="body">
   {% block content %}{% endblock %}
   </main>
   <footer class="site-footer">
-    <p>© 2026 {{ config.author }} · 由 <a href="https://github.com/xiaofeiflyfly/blog">自研生成器</a> 驱动 · 系统字体排版</p>
+    <p>© 2026 {{ config.author }} · 由 <a href="https://github.com/xiaofeiflyfly/xiaofeiflyfly.github.io">自研生成器</a> 驱动 · 系统字体排版</p>
   </footer>
 </div>
 </body>
