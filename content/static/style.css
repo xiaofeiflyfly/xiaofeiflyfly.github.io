@@ -35,20 +35,25 @@ html {
 }
 
 body {
-  font-family: Georgia, "Times New Roman",
-    "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun",
+  /* Times + 宋体：中文出版的经典搭配——同为教科书衬线，字色与笔画
+     粗细匹配；数字为等高 lining（Georgia 的 oldstyle 数字
+     高低错落，且字色偏重，与宋体细横画打架） */
+  font-family: "Times New Roman", "Songti SC", "Noto Serif SC",
+    "Noto Serif CJK SC", "Source Han Serif SC", "SimSun",
     serif;
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.9; /* 中文字符需要比拉丁更大的行高 */
   margin: 0;
   text-rendering: optimizeLegibility;
+  font-synthesis: weight; /* 禁用伪斜体（中文不该斜体），保留合成粗体（SimSun 无真粗体） */
 }
 
 /* 代码字体：等宽 + 中文注释回退 */
 pre, code, tt, kbd, samp {
-  font-family: "SF Mono", "Ubuntu Mono", Menlo, Consolas,
-    "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "DejaVu Sans Mono",
+    "Noto Sans Mono CJK SC", "PingFang SC", "Microsoft YaHei",
+    monospace;
   font-size: 0.88em;
 }
 
@@ -126,6 +131,10 @@ main.body {
   color: var(--muted-color);
   font-size: 0.88rem;
   margin: 0 0 0.6rem;
+}
+
+.meta time {
+  font-variant-numeric: lining-nums tabular-nums; /* 日期数字等高、等宽 */
 }
 
 a.tag {
